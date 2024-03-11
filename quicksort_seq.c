@@ -5,13 +5,13 @@
 
 #define TAMANHO_MAXIMO 100000000
 
-// Função Quicksort paralela usando OpenMP
+// Função Quicksort simples
 void quicksort(int arr[], int baixo, int alto) {
     if (baixo < alto) {
         // Particionar o array e obter o índice do pivô
         int pi = particionar(arr, baixo, alto);
 
-        // Executar a chamada recursiva para cada metade do array em paralelo
+        // Executar a chamada recursiva para cada metade do array
         quicksort(arr, baixo, pi - 1);
         quicksort(arr, pi + 1, alto);
     }
@@ -30,7 +30,7 @@ int main()
 
   // Preencher o vetor com valores aleatórios
   for (int i = 0; i < tamanho; i++)   {
-    arr[i] = rand() % tamanho; // Gera valores aleatórios entre 0 e 9999
+    arr[i] = rand() % tamanho; // Gera valores aleatórios entre 0 e TAMANHO_MAXIMO
   }
 
   printf("Array original (%d): \n", tamanho);
