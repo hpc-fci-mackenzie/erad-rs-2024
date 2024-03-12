@@ -3,7 +3,7 @@
 #include <time.h>
 #include "partition.h"
 
-#define TAMANHO_MAXIMO 100000000
+#define TAMANHO 100000000
 
 // Função Quicksort simples
 void quicksort(int arr[], int baixo, int alto) {
@@ -23,14 +23,14 @@ int main()
   // Seed para a função rand
   srand(time(NULL));
 
-  int tamanho = TAMANHO_MAXIMO; // Tamanho do vetor
+  int tamanho = TAMANHO; // Tamanho do vetor
 
   // Alocar memória dinamicamente para o vetor
   int *arr = (int *)malloc(tamanho * sizeof(int));
 
   // Preencher o vetor com valores aleatórios
   for (int i = 0; i < tamanho; i++)   {
-    arr[i] = rand() % tamanho; // Gera valores aleatórios entre 0 e TAMANHO_MAXIMO
+    arr[i] = rand() % tamanho; // Gera valores aleatórios entre 0 e tamanho
   }
 
   printf("Array original (%d): \n", tamanho);
@@ -41,7 +41,7 @@ int main()
   printf("\nArray ordenado (%d): \n", tamanho);
   imprimir_array(arr);
   if(validar_array_ordenado(arr, tamanho)) {
-    fprintf(stderr, "ERRO arr\n");
+    fprintf(stderr, "ERRO ao ordenar\n");
   }
   return 0;
 }
