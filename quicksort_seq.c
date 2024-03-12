@@ -7,14 +7,14 @@
 
 // Função Quicksort simples
 void quicksort(int arr[], int baixo, int alto) {
-    if (baixo < alto) {
-        // Particionar o array e obter o índice do pivô
-        int pi = particionar(arr, baixo, alto);
+  if (baixo < alto) {
+    // Particionar o array e obter o índice do pivô
+    int pi = particionar(arr, baixo, alto);
 
-        // Executar a chamada recursiva para cada metade do array
-        quicksort(arr, baixo, pi - 1);
-        quicksort(arr, pi + 1, alto);
-    }
+    // Executar a chamada recursiva para cada metade do array
+    quicksort(arr, baixo, pi - 1);
+    quicksort(arr, pi + 1, alto);
+  }
 }
 
 // Função principal

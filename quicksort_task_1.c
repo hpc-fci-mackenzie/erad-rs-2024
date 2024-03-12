@@ -7,16 +7,16 @@
 
 // Função Quicksort paralela usando OpenMP
 void quicksort_paralelo(int arr[], int baixo, int alto) {
-    if (baixo < alto) {
-        // Particionar o array e obter o índice do pivô
-        int pi = particionar(arr, baixo, alto);
+  if (baixo < alto) {
+    // Particionar o array e obter o índice do pivô
+    int pi = particionar(arr, baixo, alto);
 
-        // Executar a chamada recursiva para cada metade do array em paralelo
-        #pragma omp task default(none) firstprivate(arr, baixo, pi)
-        quicksort_paralelo(arr, baixo, pi - 1);
-        #pragma omp task default(none) firstprivate(arr, alto, pi)
-        quicksort_paralelo(arr, pi + 1, alto);
-    }
+    // Executar a chamada recursiva para cada metade do array em paralelo
+    #pragma omp task default(none) firstprivate(arr, baixo, pi)
+    quicksort_paralelo(arr, baixo, pi - 1);
+    #pragma omp task default(none) firstprivate(arr, alto, pi)
+    quicksort_paralelo(arr, pi + 1, alto);
+  }
 }
 
 // Função principal
