@@ -13,9 +13,9 @@ void quicksort_paralelo(int arr[], int baixo, int alto) {
     int pi = particionar(arr, baixo, alto);
 
     // Executar a chamada recursiva para cada metade do array em paralelo
-    #pragma omp task final((alto - baixo) < CORTE) mergeable default(none) firstprivate(arr, baixo, pi)
+    #pragma omp task final((pi - baixo + 1) < CORTE) mergeable default(none) shared(arr) firstprivate(baixo, pi)
     quicksort_paralelo(arr, baixo, pi - 1);
-    #pragma omp task final((alto - baixo) < CORTE) mergeable default(none) firstprivate(arr, alto, pi)
+    #pragma omp task final((alto - pi + 1) < CORTE) mergeable default(none) shared(arr) firstprivate(alto, pi)
     quicksort_paralelo(arr, pi + 1, alto);
   }
 }
